@@ -1,0 +1,215 @@
+/* CouchPilot — support & privacy site
+   Dimmed-theater editorial: near-black, warm marquee amber, program-notes type. */
+
+:root {
+  --bg: #0c0e13;
+  --bg-raise: #12151d;
+  --ink: #e9e4d8;
+  --ink-dim: #a8a294;
+  --ink-faint: #6d685d;
+  --amber: #e5a44a;
+  --amber-soft: rgba(229, 164, 74, 0.14);
+  --rule: rgba(233, 228, 216, 0.12);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Source Serif 4", Georgia, "Times New Roman", serif;
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  min-height: 100vh;
+  position: relative;
+}
+
+/* Projector glow: a faint warm spotlight bleeding from the top */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(90rem 40rem at 50% -20rem, rgba(229, 164, 74, 0.09), transparent 60%),
+    radial-gradient(60rem 30rem at 85% -10rem, rgba(122, 148, 210, 0.05), transparent 55%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Film grain */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.045'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+}
+
+.wrap {
+  position: relative;
+  z-index: 1;
+  max-width: 41rem;
+  margin: 0 auto;
+  padding: 3.5rem 1.5rem 5rem;
+}
+
+/* Wordmark */
+.brand {
+  display: flex;
+  align-items: baseline;
+  gap: 0.55rem;
+  text-decoration: none;
+  margin-bottom: 4.5rem;
+}
+.brand .mark {
+  font-family: "Fraunces", Georgia, serif;
+  font-weight: 600;
+  font-size: 1.25rem;
+  letter-spacing: 0.01em;
+  color: var(--ink);
+}
+.brand .dot {
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 50%;
+  background: var(--amber);
+  box-shadow: 0 0 12px rgba(229, 164, 74, 0.7);
+  align-self: center;
+}
+.brand .tag {
+  font-family: "Fraunces", Georgia, serif;
+  font-style: italic;
+  font-size: 0.95rem;
+  color: var(--ink-faint);
+}
+
+h1 {
+  font-family: "Fraunces", Georgia, serif;
+  font-weight: 550;
+  font-size: clamp(2.4rem, 7vw, 3.4rem);
+  line-height: 1.08;
+  letter-spacing: -0.015em;
+  margin-bottom: 1.1rem;
+}
+
+.lede {
+  font-size: 1.15rem;
+  color: var(--ink-dim);
+  max-width: 34rem;
+  margin-bottom: 3.5rem;
+}
+
+h2 {
+  font-family: "Fraunces", Georgia, serif;
+  font-weight: 550;
+  font-size: 1.45rem;
+  letter-spacing: -0.01em;
+  margin: 3rem 0 0.9rem;
+  padding-top: 2.2rem;
+  border-top: 1px solid var(--rule);
+}
+h2:first-of-type { border-top: 0; padding-top: 0; }
+
+/* Numbered section labels, like reel markers */
+h2 .num {
+  font-family: "Fraunces", Georgia, serif;
+  font-style: italic;
+  font-weight: 400;
+  color: var(--amber);
+  margin-right: 0.6rem;
+  font-size: 1.1rem;
+}
+
+p { margin-bottom: 1rem; color: var(--ink); }
+p.dim, li.dim { color: var(--ink-dim); }
+
+ul { margin: 0 0 1.2rem 1.2rem; }
+li { margin-bottom: 0.45rem; color: var(--ink); }
+
+strong { font-weight: 600; color: var(--ink); }
+
+a { color: var(--amber); text-decoration: underline; text-decoration-color: rgba(229, 164, 74, 0.4); text-underline-offset: 3px; transition: text-decoration-color 160ms ease; }
+a:hover { text-decoration-color: var(--amber); }
+
+/* Contact card — the one loud element */
+.contact {
+  background: linear-gradient(160deg, var(--bg-raise), rgba(229, 164, 74, 0.05));
+  border: 1px solid var(--rule);
+  border-radius: 14px;
+  padding: 1.6rem 1.7rem;
+  margin: 2.2rem 0 1rem;
+}
+.contact .label {
+  font-family: "Fraunces", Georgia, serif;
+  font-style: italic;
+  color: var(--ink-faint);
+  font-size: 0.95rem;
+  margin-bottom: 0.35rem;
+}
+.contact a.mail {
+  font-family: "Fraunces", Georgia, serif;
+  font-size: clamp(1.05rem, 4vw, 1.35rem);
+  font-weight: 550;
+  word-break: break-all;
+}
+.contact .note {
+  margin-top: 0.6rem;
+  font-size: 0.95rem;
+  color: var(--ink-dim);
+  margin-bottom: 0;
+}
+
+/* FAQ */
+details {
+  border-top: 1px solid var(--rule);
+  padding: 1.05rem 0;
+}
+details:last-of-type { border-bottom: 1px solid var(--rule); }
+summary {
+  cursor: pointer;
+  font-family: "Fraunces", Georgia, serif;
+  font-weight: 550;
+  font-size: 1.12rem;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+summary::-webkit-details-marker { display: none; }
+summary::after {
+  content: "+";
+  font-family: "Fraunces", Georgia, serif;
+  color: var(--amber);
+  font-size: 1.3rem;
+  font-weight: 400;
+  flex-shrink: 0;
+  transition: transform 180ms ease;
+}
+details[open] summary::after { transform: rotate(45deg); }
+details p { margin-top: 0.75rem; color: var(--ink-dim); }
+details p:last-child { margin-bottom: 0; }
+
+.updated {
+  font-family: "Fraunces", Georgia, serif;
+  font-style: italic;
+  color: var(--ink-faint);
+  margin-bottom: 3rem;
+}
+
+footer {
+  margin-top: 5rem;
+  padding-top: 1.6rem;
+  border-top: 1px solid var(--rule);
+  font-size: 0.9rem;
+  color: var(--ink-faint);
+}
+footer p { color: var(--ink-faint); margin-bottom: 0.35rem; }
+
+@media (max-width: 480px) {
+  .wrap { padding-top: 2.5rem; }
+  .brand { margin-bottom: 3rem; }
+}
